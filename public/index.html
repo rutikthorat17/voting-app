@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <section class="container">
+        <header>Registration Form</header>
+        <form action="http://localhost:3000/register" method="POST" class="form">
+            <div class="input-box">
+                <label>Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required pattern="[A-Za-z\s]+" title="Full name should contain only letters and spaces." />
+                <span id="fullNameError" style="color: red; display: none;">Full name should contain only letters and spaces.</span>
+            </div>
+
+            <div class="input-box">
+                <label>Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter email address" required />
+                <span id="emailError" style="color: red; display: none;">Please enter a valid email address.</span>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" required pattern="\d{10}" title="Phone number should be 10 digits." />
+                    <span id="phoneError" style="color: red; display: none;">Phone number should be 10 digits and can only contain numbers.</span>
+                </div>
+                <div class="input-box">
+                    <label>Birth Date</label>
+                    <input type="date" id="birthDate" name="birthDate" required />
+                    <span id="birthDateError" style="color: red; display: none;">Please enter a valid birth date.</span>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Voter ID</label>
+                <input type="text" id="voterID" name="voterID" placeholder="Enter voter ID" required pattern="[A-Za-z0-9]{10}" title="Voter ID should be exactly 10 alphanumeric characters." />
+                <span id="voterIDError" style="color: red; display: none;">Voter ID should be exactly 10 alphanumeric characters.</span>
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required minlength="8" title="Password should be at least 8 characters long." />
+                <span id="passwordError" style="color: red; display: none;">Password should be at least 8 characters long.</span>
+            </div>
+
+            <div class="gender-box">
+                <h3>Gender</h3>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input type="radio" id="check-male" name="gender" value="male" checked />
+                        <label for="check-male">Male</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-female" name="gender" value="female" />
+                        <label for="check-female">Female</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-other" name="gender" value="other" />
+                        <label for="check-other">Prefer not to say</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="register-box">
+                <h3>Register as</h3>
+                <div class="register-option">
+                    <div class="register">
+                        <input type="radio" id="register-user" name="registerAs" value="user" checked />
+                        <label for="register-user">User</label>
+                    </div>
+                    <div class="register">
+                        <input type="radio" id="register-candidate" name="registerAs" value="candidate" />
+                        <label for="register-candidate">Candidate</label>
+                    </div>
+                </div>
+            </div>
+            <button>Submit</button>
+            <p class="Login">Already registered? <a href="login.html">Please go to login</a></p>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('fullName').addEventListener('input', function() {
+            var fullName = this.value;
+            var regex = /^[A-Za-z\s]+$/;
+            var errorSpan = document.getElementById('fullNameError');
+            errorSpan.style.display = regex.test(fullName) ? 'none' : 'inline';
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            var email = this.value;
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var errorSpan = document.getElementById('emailError');
+            errorSpan.style.display = regex.test(email) ? 'none' : 'inline';
+        });
+
+        document.getElementById('phoneNumber').addEventListener('input', function() {
+            var phoneNumber = this.value;
+            var regex = /^\d{10}$/;
+            var errorSpan = document.getElementById('phoneError');
+            errorSpan.style.display = regex.test(phoneNumber) ? 'none' : 'inline';
+        });
+
+        document.getElementById('birthDate').addEventListener('input', function() {
+            var birthDate = this.value;
+            var errorSpan = document.getElementById('birthDateError');
+            errorSpan.style.display = birthDate ? 'none' : 'inline';
+        });
+
+        document.getElementById('voterID').addEventListener('input', function() {
+            var voterID = this.value;
+            var regex = /^[A-Za-z0-9]{10}$/;
+            var errorSpan = document.getElementById('voterIDError');
+            errorSpan.style.display = regex.test(voterID) ? 'none' : 'inline';
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            var password = this.value;
+            var errorSpan = document.getElementById('passwordError');
+            errorSpan.style.display = password.length >= 8 ? 'none' : 'inline';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "C:/Users/Shubham/OneDrive/ドキュメント/PROJECT/MERN/voting-app/server.js",
+            "env": {
+                "NODE_ENV": "development",
+                "PORT": "4000" // Set the port here
+            }
+        }
+    ]
+}

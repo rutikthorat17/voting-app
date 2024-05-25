@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login</title>
+</head>
+<body>
+    <section class="container">
+        <header>Login</header>
+        <form action="http://localhost:3000/login" method="POST" class="form">
+            <div class="input-box">
+                <label>Voter ID</label>
+                <input type="text" id="voterID" name="voterID" placeholder="Enter voter ID" required pattern="[A-Za-z0-9]{10}" title="Voter ID should be exactly 10 alphanumeric characters." />
+                <span id="voterIDError" style="color: red; display: none;">Voter ID should be exactly 10 alphanumeric characters.</span>
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required minlength="8" title="Password should be at least 8 characters long." />
+                <span id="passwordError" style="color: red; display: none;">Password should be at least 8 characters long.</span>
+            </div>
+            <form action="/login" method="POST">
+                <!-- Your form fields -->
+                <button type="submit">Login</button>
+              </form>
+              
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('voterID').addEventListener('input', function() {
+            var voterID = this.value;
+            var regex = /^[A-Za-z0-9]{10}$/;
+            var errorSpan = document.getElementById('voterIDError');
+            errorSpan.style.display = regex.test(voterID) ? 'none' : 'inline';
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            var password = this.value;
+            var errorSpan = document.getElementById('passwordError');
+            errorSpan.style.display = password.length >= 8 ? 'none' : 'inline';
+        });
+    </script>
+</body>
+</html>
